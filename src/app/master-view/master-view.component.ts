@@ -6,8 +6,7 @@ import { FinancialService } from '../services/financial.service';
 
 @Component({
   selector: 'app-master-view',
-  standalone: true,
-  imports: [IGX_CARD_DIRECTIVES, IgxToggleActionDirective, IgxOverlayOutletDirective, IgxIconButtonDirective, IgxButtonDirective, IgxRippleDirective, IgxToggleDirective, IgxIconComponent],
+  imports: [IGX_CARD_DIRECTIVES, IgxButtonDirective, IgxIconButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxToggleActionDirective, IgxToggleDirective],
   templateUrl: './master-view.component.html',
   styleUrls: ['./master-view.component.scss']
 })
@@ -15,9 +14,7 @@ export class MasterViewComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public financialBoxOfficeRevenue: BoxOfficeRevenueType[] = [];
 
-  constructor(
-    private financialService: FinancialService,
-  ) {}
+  constructor(private financialService: FinancialService) { }
 
   ngOnInit() {
     this.financialService.getBoxOfficeRevenue().pipe(takeUntil(this.destroy$)).subscribe({
